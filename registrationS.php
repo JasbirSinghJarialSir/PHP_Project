@@ -25,10 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 5. Prepare SQL Insert Statement
     $sql = "INSERT INTO tbl_user (fullname, email, username, password) VALUES ('$fullname', '$email', '$username', '$password')";
 
-    // 6. Prepare and bind
+    // 6. Prepare
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $fullname, $email, $username, $password);  // In real apps, hash password!
-
+    
     // 7. Execute and check
     if ($stmt->execute()) {
         echo "Registration successful!";
